@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parishrama | Learn. Empower. Pay It Forward.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        empowerBlue: {
+                            DEFAULT: '#1E3A8A',
+                            dark: '#172554',
+                            light: '#3B82F6',
+                            50: '#EFF6FF'
+                        },
+                        hopeAmber: {
+                            DEFAULT: '#F59E0B',
+                            hover: '#D97706',
+                            light: '#FEF3C7'
+                        },
+                        growthEmerald: {
+                            DEFAULT: '#10B981',
+                            dark: '#059669',
+                            light: '#D1FAE5'
+                        },
+                        charcoal: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #1E3A8A 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.1), transparent 50%),
+                        linear-gradient(to bottom, #F8FAFC, #FFFFFF);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-50 text-slate-800 antialiased selection:bg-hopeAmber selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 w-full glass-card border-b border-slate-200/80 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Brand Logo & Tagline -->
+                <a href="#" class="flex items-center gap-3 group focus:outline-none">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-empowerBlue to-growthEmerald p-2.5 text-white shadow-md shadow-empowerBlue/20 transition-transform group-hover:scale-105">
+                        <!-- Custom Infinity Book / Sapling Logo Icon -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                            <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            <path d="M12 12c1.5-2 3.5-2.5 5-1s.5 3.5-1 5l-4 4" class="opacity-70" />
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-2xl font-black tracking-tight text-empowerBlue">PARISHRAMA</span>
+                            <span class="text-xs px-2 py-0.5 rounded-full bg-growthEmerald-light text-growthEmerald-dark font-semibold">.org</span>
+                        </div>
+                        <p class="text-[10px] font-medium tracking-widest text-slate-500 uppercase">Learn • Empower • Pay It Forward</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-empowerBlue transition-colors">How It Works</a>
+                    <a href="#calculator" class="text-sm font-medium text-slate-600 hover:text-empowerBlue transition-colors">Impact Calculator</a>
+                    <a href="#volunteer" class="text-sm font-medium text-slate-600 hover:text-empowerBlue transition-colors">Volunteer Hub</a>
+                    <a href="#stories" class="text-sm font-medium text-slate-600 hover:text-empowerBlue transition-colors">Scholar Stories</a>
+                    <a href="#impact" class="text-sm font-medium text-slate-600 hover:text-empowerBlue transition-colors">Live Impact</a>
+                </nav>
+
+                <!-- Action Buttons -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <button onclick="openApplyModal()" class="px-4 py-2.5 text-sm font-semibold text-empowerBlue bg-empowerBlue-50 hover:bg-blue-100 rounded-xl transition-all border border-blue-200">
+                        Apply for Grant
+                    </button>
+                    <button onclick="openDonateModal()" class="px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-hopeAmber to-amber-600 hover:from-amber-600 hover:to-amber-700 rounded-xl shadow-lg shadow-hopeAmber/25 hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-heart mr-1.5"></i> Donate Now
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle menu">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl" id="mobileMenu">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-slate-700 hover:text-empowerBlue">How It Works</a>
+            <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-slate-700 hover:text-empowerBlue">Impact Calculator</a>
+            <a href="#volunteer" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-slate-700 hover:text-empowerBlue">Volunteer Hub</a>
+            <a href="#stories" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-slate-700 hover:text-empowerBlue">Scholar Stories</a>
+            <a href="#impact" onclick="toggleMobileMenu()" class="block py-2 text-base font-medium text-slate-700 hover:text-empowerBlue">Live Impact</a>
+            <div class="pt-3 flex flex-col gap-2">
+                <button onclick="toggleMobileMenu(); openApplyModal();" class="w-full py-2.5 text-center font-semibold text-empowerBlue bg-empowerBlue-50 rounded-xl border border-blue-200">
+                    Apply for Grant
+                </button>
+                <button onclick="toggleMobileMenu(); openDonateModal();" class="w-full py-2.5 text-center font-bold text-white bg-hopeAmber rounded-xl shadow-md">
+                    Donate Now
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative hero-gradient pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Column Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-growthEmerald-light text-growthEmerald-dark text-xs font-bold tracking-wide uppercase shadow-sm">
+                        <i class="fa-solid fa-seedling"></i> Zero-Interest Philanthropic Cycle
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-charcoal tracking-tight leading-tight">
+                        Fund A Student Today. <br>
+                        <span class="gradient-text">Empower Next Generation Tomorrow.</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-600 font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Parishrama bridges tuition fee gaps for ambitious students through an honor-bound <strong>Pay-It-Forward pledge</strong>. When scholars graduate and earn, they sponsor the next student's dream.
+                    </p>
+
+                    <!-- Dual CTAs -->
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <button onclick="openDonateModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-empowerBlue text-white font-bold text-base shadow-xl shadow-empowerBlue/25 hover:bg-empowerBlue-dark transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <span>Sponsor A Tuition Grant</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="openApplyModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white text-slate-700 font-semibold text-base border border-slate-300 hover:bg-slate-50 transition-all flex items-center justify-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-user-graduate text-growthEmerald"></i>
+                            <span>Request Tuition Assistance</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Micro-Badges -->
+                    <div class="pt-6 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-slate-500 text-xs font-semibold">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-growthEmerald text-base"></i> 100% Transparency Guarantee
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-award text-hopeAmber text-base"></i> Registered 501(c)(3) Nonprofit
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-users-line text-empowerBlue text-base"></i> 4,200+ Active Pay-Forward Scholars
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Interactive Widget Preview Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 relative">
+                        <div class="absolute -top-3 -right-3 bg-hopeAmber text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            <i class="fa-solid fa-bolt mr-1"></i> Continuous Impact
+                        </div>
+                        <div class="space-y-6">
+                            <div class="border-b border-slate-100 pb-4">
+                                <h3 class="text-xl font-extrabold text-charcoal">The Parishrama Ripple Effect</h3>
+                                <p class="text-xs text-slate-500 mt-1">See how 1 single gift compounds over 10 years</p>
+                            </div>
+
+                            <!-- Live Counter Box -->
+                            <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/70 space-y-4">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="text-slate-600 font-medium">Initial Contribution:</span>
+                                    <span class="font-extrabold text-empowerBlue text-base">$1,000 Grant</span>
+                                </div>
+                                <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-empowerBlue to-growthEmerald h-full rounded-full w-full animate-pulse"></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3 pt-2 text-center">
+                                    <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                        <div class="text-2xl font-black text-growthEmerald">5 Students</div>
+                                        <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Educated by Yr 6</div>
+                                    </div>
+                                    <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                        <div class="text-2xl font-black text-empowerBlue">$5,000+</div>
+                                        <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Recycled Value</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quote Teaser -->
+                            <div class="flex items-start gap-3 bg-amber-50/70 border border-amber-200/60 p-3.5 rounded-xl">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120" alt="Ananya" class="w-10 h-10 rounded-full object-cover ring-2 ring-hopeAmber">
+                                <div class="text-xs">
+                                    <p class="text-slate-700 italic">"Parishrama paid my final engineering semester. Today, I contribute $50/month to educate two junior girls."</p>
+                                    <p class="font-bold text-slate-900 mt-1">— Ananya V., Software Engineer & Pay-Forward Donor</p>
+                                </div>
+                            </div>
+
+                            <button onclick="openDonateModal()" class="w-full py-3 bg-growthEmerald hover:bg-growthEmerald-dark text-white rounded-xl font-bold text-sm shadow-md transition-all">
+                                Join The Cycle of Giving
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="about" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-bold tracking-widest text-empowerBlue uppercase bg-blue-50 px-3 py-1 rounded-full border border-blue-100">Sustainable Philanthropy</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal">How The Pay-It-Forward Circle Works</h2>
+                <p class="text-slate-600 text-base">
+                    Traditional charity ends with one student. Parishrama turns every recipient into a lifelong patron for future generations.
+                </p>
+            </div>
+
+            <!-- Workflow Steps -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                
+                <!-- Connector line for desktop -->
+                <div class="hidden md:block absolute top-1/2 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-empowerBlue via-growthEmerald to-hopeAmber -translate-y-8 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 bg-slate-50 rounded-2xl p-8 border border-slate-200 text-center space-y-4 hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 rounded-2xl bg-empowerBlue text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md group-hover:scale-110 transition-transform">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal">Grant Allocation</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Deserving students facing tuition shortage submit verified academic records. Donations directly pay their college fees.
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-empowerBlue bg-blue-50 px-3 py-1 rounded-full">
+                        Zero Interest • Zero Debt
+                    </span>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 bg-slate-50 rounded-2xl p-8 border border-slate-200 text-center space-y-4 hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 rounded-2xl bg-growthEmerald text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md group-hover:scale-110 transition-transform">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal">Mentorship & Graduation</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Students receive career mentoring from our volunteer network to secure employment and build sustainable careers.
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-growthEmerald-dark bg-growthEmerald-light px-3 py-1 rounded-full">
+                        Holistic Skill Coaching
+                    </span>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 bg-slate-50 rounded-2xl p-8 border border-slate-200 text-center space-y-4 hover:shadow-lg transition-all group">
+                    <div class="w-16 h-16 rounded-2xl bg-hopeAmber text-white font-black text-2xl flex items-center justify-center mx-auto shadow-md group-hover:scale-110 transition-transform">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-charcoal">Paying It Forward</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Upon financial independence, graduates voluntarily contribute back to fund tuition for the next student in line.
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-amber-800 bg-hopeAmber-light px-3 py-1 rounded-full">
+                        Infinite Community Growth
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Impact Calculator Section -->
+    <section id="calculator" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase">
+                        <i class="fa-solid fa-calculator"></i> Interactive Simulator
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">
+                        Calculate Your <span class="text-hopeAmber">Long-Term Impact</span>
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Adjust the slider to see how your initial gift propagates over time through the Pay-Forward commitment of our scholars.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <i class="fa-solid fa-circle-check text-growthEmerald"></i>
+                            <span>Assumes average graduate contribution of $300/year after 3 years.</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-sm text-slate-300">
+                            <i class="fa-solid fa-circle-check text-growthEmerald"></i>
+                            <span>100% of pay-forward returns recycled to new students.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 bg-slate-800/90 rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl">
+                    <div class="space-y-8">
+                        
+                        <!-- Slider Input -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label for="impactSlider" class="text-sm font-semibold text-slate-300">Your Initial Grant Amount:</label>
+                                <span class="text-2xl font-black text-hopeAmber" id="sliderValueText">$500</span>
+                            </div>
+                            <input type="range" id="impactSlider" min="100" max="5000" step="100" value="500" 
+                                class="w-full h-3 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-hopeAmber"
+                                oninput="updateCalculator(this.value)">
+                            <div class="flex justify-between text-xs text-slate-400 mt-2">
+                                <span>$100 (Micro-Grant)</span>
+                                <span>$2,500 (Full Term)</span>
+                                <span>$5,000 (Multi-Year)</span>
+                            </div>
+                        </div>
+
+                        <!-- Computed Projections -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-700">
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 text-center">
+                                <div class="text-xs font-medium text-slate-400 uppercase">Immediate Scholars</div>
+                                <div class="text-2xl font-bold text-white mt-1" id="calcImmediate">1 Student</div>
+                                <div class="text-[11px] text-slate-500 mt-1">Direct tuition covered</div>
+                            </div>
+                            
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 text-center">
+                                <div class="text-xs font-medium text-slate-400 uppercase">5-Year Extended Scholars</div>
+                                <div class="text-2xl font-bold text-growthEmerald mt-1" id="calc5Year">3 Students</div>
+                                <div class="text-[11px] text-slate-500 mt-1">Via recycled pledges</div>
+                            </div>
+
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-700 text-center">
+                                <div class="text-xs font-medium text-slate-400 uppercase">10-Year Cumulative Value</div>
+                                <div class="text-2xl font-bold text-hopeAmber mt-1" id="calcValue">$2,300</div>
+                                <div class="text-[11px] text-slate-500 mt-1">Total education funded</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-empowerBlue/20 border border-empowerBlue/40 p-4 rounded-xl flex items-center justify-between flex-wrap gap-4">
+                            <span class="text-xs text-slate-200">Ready to initiate this transformational cycle?</span>
+                            <button onclick="openDonateModalWithAmount()" class="px-5 py-2.5 bg-hopeAmber hover:bg-hopeAmber-hover text-white rounded-lg font-bold text-xs shadow">
+                                Sponsor This Impact
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Hub Section -->
+    <section id="volunteer" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-bold tracking-widest text-growthEmerald-dark bg-growthEmerald-light px-3 py-1 rounded-full uppercase">Community Driven</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal">Join The Parishrama Volunteer Network</h2>
+                <p class="text-slate-600 text-base">
+                    Money isn't the only way to pay it forward. Share your expertise, mentor students, or lead local educational outreach.
+                </p>
+            </div>
+
+            <!-- Role Cards -->
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-blue-100 text-empowerBlue flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-charcoal">Career Mentor</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Guide final-year scholars in resume creation, interview practice, and job placements.
+                    </p>
+                    <span class="text-[11px] font-semibold text-slate-500">Commitment: 2 hrs/week</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-hopeAmber flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-charcoal">Academic Tutor</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Provide virtual or offline academic coaching in STEM, business, or language arts.
+                    </p>
+                    <span class="text-[11px] font-semibold text-slate-500">Commitment: 3 hrs/week</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-growthEmerald flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-bullhorn"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-charcoal">Community Ambassador</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Identify underprivileged students in your district and lead local verification drives.
+                    </p>
+                    <span class="text-[11px] font-semibold text-slate-500">Commitment: Flexible</span>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-charcoal">Tech & Operations</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Assist Parishrama platform engineers with open-source updates, data audits, and design.
+                    </p>
+                    <span class="text-[11px] font-semibold text-slate-500">Commitment: Project-based</span>
+                </div>
+
+            </div>
+
+            <div class="mt-10 text-center">
+                <button onclick="openVolunteerModal()" class="px-8 py-3.5 bg-empowerBlue text-white font-bold rounded-xl shadow-lg hover:bg-empowerBlue-dark transition-all">
+                    Register as a Volunteer Today
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial & Scholar Stories Carousel -->
+    <section id="stories" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <span class="text-xs font-bold tracking-widest text-empowerBlue uppercase bg-blue-50 px-3 py-1 rounded-full">Real Transformation</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-charcoal">From Beneficiaries to Benefactors</h2>
+                <p class="text-slate-600 text-base">
+                    Read how Parishrama scholars completed their education and returned to sponsor the next cohort.
+                </p>
+            </div>
+
+            <!-- Carousel Cards Container -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Story 1 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-hopeAmber text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic leading-relaxed">
+                            "When my father suffered a job loss during my 3rd year of Mechanical Engineering, Parishrama covered $1,200 in pending fees. Fast forward 3 years: I am now a Design Engineer and paying $100/month into the Parishrama fund."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120" alt="Rahul" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm">Rahul K.</h4>
+                            <p class="text-xs text-slate-500">Graduated 2023 • Paid Forward $2,400</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 2 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-hopeAmber text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic leading-relaxed">
+                            "I almost dropped out of nursing school due to exam fee constraints. Parishrama not only funded my final term but paired me with a veteran head nurse mentor. Today I serve at a public hospital and sponsor a student named Priya."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=120" alt="Priya" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm">Meera S.</h4>
+                            <p class="text-xs text-slate-500">Registered Nurse • Active Mentor</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story 3 -->
+                <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-1 text-hopeAmber text-xs">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-700 text-sm italic leading-relaxed">
+                            "The transparency of Parishrama impressed me the most. I could see exactly which university directly received my tuition grant. Knowing my beneficiary will pay it forward makes this the most sustainable charity ever."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=120" alt="Vikram" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <h4 class="font-bold text-charcoal text-sm">Vikram Mehta</h4>
+                            <p class="text-xs text-slate-500">Corporate Donor • Tech Director</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Impact Counter Section -->
+    <section id="impact" class="py-16 bg-gradient-to-r from-empowerBlue to-empowerBlue-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-blue-800/60">
+                
+                <div class="pt-4 lg:pt-0">
+                    <div class="text-3xl sm:text-5xl font-black text-hopeAmber mb-1" id="statStudents">3,840+</div>
+                    <div class="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wider">Students Funded</div>
+                </div>
+
+                <div class="pt-4 lg:pt-0">
+                    <div class="text-3xl sm:text-5xl font-black text-growthEmerald mb-1" id="statFunds">$2.8M</div>
+                    <div class="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wider">Tuition Grants Disbursed</div>
+                </div>
+
+                <div class="pt-4 lg:pt-0">
+                    <div class="text-3xl sm:text-5xl font-black text-white mb-1" id="statPledges">88%</div>
+                    <div class="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wider">Pay-Forward Pledge Honored</div>
+                </div>
+
+                <div class="pt-4 lg:pt-0">
+                    <div class="text-3xl sm:text-5xl font-black text-hopeAmber mb-1" id="statVolunteers">1,150+</div>
+                    <div class="text-xs sm:text-sm font-semibold text-blue-200 uppercase tracking-wider">Active Mentors & Tutors</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-charcoal text-slate-400 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Brand Column -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-empowerBlue to-growthEmerald p-1.5 text-white">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-full">
+                                <path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-black text-white">PARISHRAMA</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400 max-w-sm">
+                        Parishrama is a zero-interest pay-it-forward education collective dedicated to ensuring financial constraints never stop a student's graduation.
+                    </p>
+                    <div class="text-xs text-slate-500">
+                        <p>EIN: 84-2910391 • Registered 501(c)(3) Nonprofit</p>
+                        <p class="text-emerald-400 font-medium mt-1">Tax Deductible Contributions in US & India (80G)</p>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Programs</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#" onclick="openApplyModal(); return false;" class="hover:text-white transition-colors">Tuition Assistance Grants</a></li>
+                        <li><a href="#volunteer" class="hover:text-white transition-colors">Career Mentorship</a></li>
+                        <li><a href="#calculator" class="hover:text-white transition-colors">Pay-Forward Scholars</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Institutional Verification</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Organization</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Parishrama</a></li>
+                        <li><a href="#impact" class="hover:text-white transition-colors">Financial Reports & Audits</a></li>
+                        <li><a href="#volunteer" class="hover:text-white transition-colors">Volunteers & Governance</a></li>
+                        <li><a href="#" onclick="alert('Contact details: support@parishrama.org | +1 (800) 555-PARI'); return false;" class="hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4 Newsletter -->
+                <div class="space-y-3">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Stay Impacted</h4>
+                    <p class="text-xs text-slate-400">Receive monthly scholar stories & financial transparency audits.</p>
+                    <form onsubmit="handleNewsletter(event)" class="space-y-2">
+                        <input type="email" placeholder="Enter your email" required class="w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-xs text-white focus:outline-none focus:border-empowerBlue">
+                        <button type="submit" class="w-full py-2 bg-growthEmerald hover:bg-growthEmerald-dark text-white rounded-lg text-xs font-bold transition-all">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Bottom Legal -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+                <p>&copy; 2026 Parishrama Foundation. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Honor Pledge</a>
+                    <a href="#" class="hover:text-white">Security & Audits</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Donation Modal Portal -->
+    <div id="donateModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100">
+            <!-- Close Button -->
+            <button onclick="closeDonateModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 focus:outline-none text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 bg-hopeAmber-light text-hopeAmber rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-charcoal">Sponsor A Tuition Grant</h3>
+                <p class="text-xs text-slate-500">100% of your donation directly pays accredited college tuition.</p>
+            </div>
+
+            <!-- Donation Form Content -->
+            <form id="donationForm" onsubmit="handleDonationSubmit(event)" class="space-y-5">
+                
+                <!-- Donation Frequency Toggle -->
+                <div class="grid grid-cols-2 gap-2 bg-slate-100 p-1 rounded-xl text-xs font-bold text-slate-600">
+                    <button type="button" onclick="setFrequency('one-time')" id="freqOneTime" class="py-2 rounded-lg bg-white text-empowerBlue shadow-sm">One-Time Grant</button>
+                    <button type="button" onclick="setFrequency('monthly')" id="freqMonthly" class="py-2 rounded-lg hover:text-empowerBlue">Monthly Sponsorship</button>
+                </div>
+
+                <!-- Tier Selection Buttons -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Select Contribution Amount ($ USD):</label>
+                    <div class="grid grid-cols-3 gap-2.5">
+                        <button type="button" onclick="selectDonationAmount(50, this)" class="donation-btn py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-empowerBlue focus:outline-none">$50</button>
+                        <button type="button" onclick="selectDonationAmount(100, this)" class="donation-btn py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-empowerBlue focus:outline-none">$100</button>
+                        <button type="button" onclick="selectDonationAmount(250, this)" class="donation-btn py-3 border-2 border-empowerBlue bg-blue-50/50 rounded-xl text-sm font-bold text-empowerBlue focus:outline-none">$250</button>
+                        <button type="button" onclick="selectDonationAmount(500, this)" class="donation-btn py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-empowerBlue focus:outline-none">$500</button>
+                        <button type="button" onclick="selectDonationAmount(1000, this)" class="donation-btn py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-empowerBlue focus:outline-none">$1,000</button>
+                        <button type="button" onclick="selectCustomAmount(this)" class="donation-btn py-3 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:border-empowerBlue focus:outline-none">Custom</button>
+                    </div>
+                    <input type="number" id="customAmountInput" placeholder="Enter custom amount ($)" class="mt-3 w-full px-4 py-2.5 border border-slate-300 rounded-xl text-sm focus:outline-none focus:border-empowerBlue hidden">
+                </div>
+
+                <!-- Payment Method Simulator Tabs -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-2">Payment Method:</label>
+                    <div class="grid grid-cols-3 gap-2 text-center text-xs font-semibold text-slate-600">
+                        <button type="button" onclick="setPayMethod('card')" id="payCard" class="py-2.5 border border-empowerBlue bg-blue-50 text-empowerBlue rounded-xl"><i class="fa-solid fa-credit-card mr-1"></i> Credit Card</button>
+                        <button type="button" onclick="setPayMethod('upi')" id="payUPI" class="py-2.5 border border-slate-200 rounded-xl"><i class="fa-solid fa-mobile-screen-button mr-1"></i> UPI / NetBank</button>
+                        <button type="button" onclick="setPayMethod('paypal')" id="payPayPal" class="py-2.5 border border-slate-200 rounded-xl"><i class="fa-brands fa-paypal mr-1"></i> PayPal</button>
+                    </div>
+                </div>
+
+                <!-- Simulated Inputs -->
+                <div class="space-y-3" id="paymentDetailsContainer">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-600 mb-1">Full Name</label>
+                        <input type="text" required placeholder="Jane Doe" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-600 mb-1">Email Address (for tax receipt)</label>
+                        <input type="email" required placeholder="jane@example.com" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                </div>
+
+                <!-- Fund Breakdown Bar -->
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-1.5">
+                    <div class="flex justify-between text-[11px] font-bold text-slate-700">
+                        <span>Fund Allocation Breakdown</span>
+                        <span class="text-growthEmerald">100% Direct Impact</span>
+                    </div>
+                    <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden flex">
+                        <div class="bg-empowerBlue h-full w-[90%]" title="90% Direct Tuition"></div>
+                        <div class="bg-growthEmerald h-full w-[10%]" title="10% Scholar Mentorship"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-slate-500">
+                        <span>■ 90% Direct Tuition Disbursement</span>
+                        <span>■ 10% Mentorship & Audits</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-hopeAmber to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold rounded-xl shadow-lg shadow-hopeAmber/30 transition-all text-sm">
+                    Complete Donation & Unlock Impact
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Assistance & Grant Application Modal -->
+    <div id="applyModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100">
+            <button onclick="closeApplyModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 focus:outline-none text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 bg-blue-100 text-empowerBlue rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-charcoal">Tuition Assistance Grant Application</h3>
+                <p class="text-xs text-slate-500">Zero-interest tuition grant paired with an honor-bound Pay-It-Forward pledge.</p>
+            </div>
+
+            <form onsubmit="handleApplySubmit(event)" class="space-y-4">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Student Full Name *</label>
+                        <input type="text" required placeholder="Arjun Patel" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Email Address *</label>
+                        <input type="email" required placeholder="arjun@university.edu" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">College / University Name *</label>
+                        <input type="text" required placeholder="National Institute of Tech" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Current Year / Degree *</label>
+                        <select required class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue bg-white">
+                            <option value="">Select degree year</option>
+                            <option>Undergraduate - 2nd Year</option>
+                            <option>Undergraduate - 3rd Year</option>
+                            <option>Undergraduate - Final Year</option>
+                            <option>Postgraduate / Masters</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Requested Tuition Grant ($) *</label>
+                        <input type="number" required placeholder="e.g. 800" min="100" max="5000" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Current GPA / Academic Grade *</label>
+                        <input type="text" required placeholder="3.8 GPA or 85%" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Statement of Financial Need *</label>
+                    <textarea required rows="3" placeholder="Briefly describe your current situation and how this grant will allow you to complete your degree..." class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue"></textarea>
+                </div>
+
+                <!-- Pay-It-Forward Honor Checkbox Pledge -->
+                <div class="p-3.5 bg-amber-50 rounded-2xl border border-amber-200 space-y-2">
+                    <label class="flex items-start gap-2.5 cursor-pointer">
+                        <input type="checkbox" required class="mt-1 w-4 h-4 text-hopeAmber rounded accent-hopeAmber focus:ring-hopeAmber">
+                        <span class="text-xs text-amber-900 leading-tight">
+                            <strong>The Parishrama Pay-It-Forward Honor Pledge:</strong> I solemnly pledge that upon my graduation and securing gainful employment, I will voluntarily pay forward tuition grants to support future students in need.
+                        </span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-empowerBlue hover:bg-empowerBlue-dark text-white font-bold rounded-xl shadow-lg transition-all text-sm">
+                    Submit Application for Verification
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Volunteer Modal -->
+    <div id="volunteerModal" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative my-8 border border-slate-100">
+            <button onclick="closeVolunteerModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-600 focus:outline-none text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <div class="w-12 h-12 bg-emerald-100 text-growthEmerald rounded-full flex items-center justify-center mx-auto text-xl font-bold">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="text-2xl font-extrabold text-charcoal">Join Volunteer Network</h3>
+                <p class="text-xs text-slate-500">Lend your skills and mentor the next generation of graduates.</p>
+            </div>
+
+            <form onsubmit="handleVolunteerSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Full Name *</label>
+                    <input type="text" required placeholder="Alex Morgan" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Email Address *</label>
+                    <input type="email" required placeholder="alex@company.com" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Preferred Volunteer Role *</label>
+                    <select required class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue bg-white">
+                        <option value="">Select a volunteer track</option>
+                        <option>Career Mentor (Resume / Job prep)</option>
+                        <option>Academic Tutor (STEM / Subjects)</option>
+                        <option>Community Ambassador (Student Verification)</option>
+                        <option>Tech & Platform Operations</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-[11px] font-bold text-slate-700 mb-1">Professional Background / LinkedIn</label>
+                    <input type="text" placeholder="e.g. Senior Software Engineer at Tech Corp" class="w-full px-3.5 py-2 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-empowerBlue">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-growthEmerald hover:bg-growthEmerald-dark text-white font-bold rounded-xl shadow-lg transition-all text-sm">
+                    Complete Volunteer Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic & Dynamic Interactivity -->
+    <script>
+        // Interactive Impact Calculator State
+        function updateCalculator(val) {
+            document.getElementById('sliderValueText').innerText = '$' + parseInt(val).toLocaleString();
+            
+            // Projections logic
+            const amount = parseInt(val);
+            const immediate = Math.max(1, Math.floor(amount / 500));
+            const fiveYearScholars = Math.round(immediate * 3.2);
+            const tenYearValue = Math.round(amount * 4.6);
+
+            document.getElementById('calcImmediate').innerText = immediate + (immediate === 1 ? ' Student' : ' Students');
+            document.getElementById('calc5Year').innerText = fiveYearScholars + ' Students';
+            document.getElementById('calcValue').innerText = '$' + tenYearValue.toLocaleString();
+        }
+
+        // Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Donation Modal Handlers
+        let selectedDonation = 250;
+        let selectedFrequency = 'one-time';
+
+        function openDonateModal() {
+            document.getElementById('donateModal').classList.remove('hidden');
+        }
+
+        function openDonateModalWithAmount() {
+            openDonateModal();
+        }
+
+        function closeDonateModal() {
+            document.getElementById('donateModal').classList.add('hidden');
+        }
+
+        function setFrequency(freq) {
+            selectedFrequency = freq;
+            const btnOne = document.getElementById('freqOneTime');
+            const btnMonth = document.getElementById('freqMonthly');
+            if (freq === 'one-time') {
+                btnOne.className = "py-2 rounded-lg bg-white text-empowerBlue shadow-sm";
+                btnMonth.className = "py-2 rounded-lg hover:text-empowerBlue";
+            } else {
+                btnMonth.className = "py-2 rounded-lg bg-white text-empowerBlue shadow-sm";
+                btnOne.className = "py-2 rounded-lg hover:text-empowerBlue";
+            }
+        }
+
+        function selectDonationAmount(amt, element) {
+            selectedDonation = amt;
+            document.getElementById('customAmountInput').classList.add('hidden');
+            document.querySelectorAll('.donation-btn').forEach(btn => {
+                btn.className = "donation-btn py-3 border border-slate-200 rounded-xl text-sm font-bold text-slate-700 hover:border-empowerBlue focus:outline-none";
+            });
+            element.className = "donation-btn py-3 border-2 border-empowerBlue bg-blue-50/50 rounded-xl text-sm font-bold text-empowerBlue focus:outline-none";
+        }
+
+        function selectCustomAmount(element) {
+            const input = document.getElementById('customAmountInput');
+            input.classList.remove('hidden');
+            input.focus();
+            document.querySelectorAll('.donation-btn').forEach(btn => {
+                btn.className = "donation-btn py-3 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 hover:border-empowerBlue focus:outline-none";
+            });
+            element.className = "donation-btn py-3 border-2 border-empowerBlue bg-blue-50/50 rounded-xl text-xs font-bold text-empowerBlue focus:outline-none";
+        }
+
+        function setPayMethod(method) {
+            const cardBtn = document.getElementById('payCard');
+            const upiBtn = document.getElementById('payUPI');
+            const paypalBtn = document.getElementById('payPayPal');
+            
+            [cardBtn, upiBtn, paypalBtn].forEach(b => b.className = "py-2.5 border border-slate-200 rounded-xl");
+
+            if (method === 'card') cardBtn.className = "py-2.5 border border-empowerBlue bg-blue-50 text-empowerBlue rounded-xl font-bold";
+            if (method === 'upi') upiBtn.className = "py-2.5 border border-empowerBlue bg-blue-50 text-empowerBlue rounded-xl font-bold";
+            if (method === 'paypal') paypalBtn.className = "py-2.5 border border-empowerBlue bg-blue-50 text-empowerBlue rounded-xl font-bold";
+        }
+
+        function handleDonationSubmit(e) {
+            e.preventDefault();
+            const customVal = document.getElementById('customAmountInput').value;
+            const finalAmt = customVal ? customVal : selectedDonation;
+            
+            closeDonateModal();
+            showCustomToast(`Thank you! Your donation of $${finalAmt} has been processed. A tax receipt was emailed.`);
+        }
+
+        // Student Apply Modal Handlers
+        function openApplyModal() {
+            document.getElementById('applyModal').classList.remove('hidden');
+        }
+
+        function closeApplyModal() {
+            document.getElementById('applyModal').classList.add('hidden');
+        }
+
+        function handleApplySubmit(e) {
+            e.preventDefault();
+            closeApplyModal();
+            showCustomToast("Grant Application Received! Our audit team will verify your college records within 3 business days.");
+        }
+
+        // Volunteer Modal Handlers
+        function openVolunteerModal() {
+            document.getElementById('volunteerModal').classList.remove('hidden');
+        }
+
+        function closeVolunteerModal() {
+            document.getElementById('volunteerModal').classList.add('hidden');
+        }
+
+        function handleVolunteerSubmit(e) {
+            e.preventDefault();
+            closeVolunteerModal();
+            showCustomToast("Welcome to the network! Our community coordinator will reach out to schedule an orientation.");
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showCustomToast("Subscribed! You will receive our monthly Pay-It-Forward impact newsletter.");
+            e.target.reset();
+        }
+
+        // Custom Inline Toast Message
+        function showCustomToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 z-50 bg-charcoal text-white px-5 py-4 rounded-2xl shadow-2xl border border-slate-700 text-xs font-semibold flex items-center gap-3 transition-all transform translate-y-10 opacity-0 max-w-md';
+            toast.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-growthEmerald flex items-center justify-center text-white shrink-0">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <div>${message}</div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+
+        // Initialize Calculator default state
+        window.onload = function() {
+            updateCalculator(500);
+        }
+    </script>
+</body>
+</html>
